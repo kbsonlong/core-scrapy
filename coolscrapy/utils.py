@@ -186,8 +186,22 @@ def init_rule():
             source_site='开源中国',
             enable=1
         )
+        artile_rule3 = ArticleRule(
+            name='along',
+            allow_domains='along.party',
+            start_urls='https://www.along.party/',
+            next_page='',
+            allow_url='/?p=\d+',
+            extract_from='//div[@class="content"]',
+            title_xpath='//h1[@class="article-title"]/a/text()',
+            body_xpath='//div[@class="post-content"]',
+            publish_time_xpath='//span[@class="muted"]/text()',
+            source_site='蜷缩的蜗牛',
+            enable=1
+        )
         session.add(artile_rule1)
         session.add(artile_rule2)
+        session.add(artile_rule3)
 
 
 def parse_text(extract_texts, rule_name, attr_name):
@@ -219,5 +233,3 @@ def osc_publish_time(extract_texts):
 def tx(xpath_obj):
     return ''.join(xpath_obj.extract()).strip()
 
-if __name__ == '__main__':
-    print('11/222/333/'.split('/'))

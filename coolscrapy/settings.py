@@ -8,7 +8,9 @@
 #     http://doc.scrapy.org/en/latest/topics/settings.html
 #     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
-import logging
+import logging,os
+
+BASE_PATH = os.path.abspath('..')
 
 BOT_NAME = 'coolscrapy'
 
@@ -20,9 +22,9 @@ ITEM_PIPELINES = {
     # 'coolscrapy.pipelines.FilterWordsPipeline': 2,
     # 'coolscrapy.pipelines.JsonWriterPipeline': 3,
     # 'coolscrapy.pipelines.JsonExportPipeline': 4,
-    # 'coolscrapy.pipelines.ArticleDataBasePipeline': 5,
-    'coolscrapy.pipelines.TobaccoImagePipeline': 6,
-    'coolscrapy.pipelines.TobaccoDatabasePipeline': 7,
+    'coolscrapy.pipelines.ArticleDataBasePipeline': 5,
+    # 'coolscrapy.pipelines.TobaccoImagePipeline': 6,
+    # 'coolscrapy.pipelines.TobaccoDatabasePipeline': 7,
 }
 DOWNLOADER_MIDDLEWARES = {
     # 这里是下载中间件
@@ -46,22 +48,22 @@ COOKIES_ENABLES = True
 
 LOG_LEVEL = logging.INFO
 LOG_STDOUT = True
-LOG_FILE = "E:/logs/spider.log"
+LOG_FILE = r"%s/logs/spider.log" % BASE_PATH
 LOG_FORMAT = "%(asctime)s [%(name)s] %(levelname)s: %(message)s"
 
 
 # windows pip install mysqlclient
 # linux pip install MySQL-python
 DATABASE = {'drivername': 'mysql',
-            'host': '123.207.66.156',
+            'host': 'www.along.party',
             'port': '3306',
             'username': 'root',
-            'password': '******',
-            'database': 'test',
+            'password': '',
+            'database': 'spider_tools',
             'query': {'charset': 'utf8'}}
 
 # 图片下载设置
-IMAGES_STORE = 'E:/logs/'
+IMAGES_STORE = r'%s/logs/' % BASE_PATH
 IMAGES_EXPIRES = 30  # 30天内抓取的都不会被重抓
 # 图片链接前缀
 URL_PREFIX = 'http://enzhico.net/pics/'
@@ -137,8 +139,8 @@ HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 # Enable and configure HTTP caching (disabled by default)
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-# HTTPCACHE_ENABLED=True
-# HTTPCACHE_EXPIRATION_SECS=0
-# HTTPCACHE_DIR='httpcache'
-# HTTPCACHE_IGNORE_HTTP_CODES=[]
+HTTPCACHE_ENABLED=True
+HTTPCACHE_EXPIRATION_SECS=0
+HTTPCACHE_DIR='httpcache'
+HTTPCACHE_IGNORE_HTTP_CODES=[]
 # HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'

@@ -121,3 +121,7 @@ class Barcode(Base):
     btype = Column(String(32))
     created_time = Column(DateTime, default=_get_date)
     updated_time = Column(DateTime, default=_get_date)
+
+if __name__ == '__main__':
+    engine = create_engine('mysql://root:kbsonlong@www.along.party:8080/spider_tools')
+    create_news_table(engine)

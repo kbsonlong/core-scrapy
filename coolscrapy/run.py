@@ -10,7 +10,7 @@ from twisted.internet import reactor
 from scrapy.crawler import CrawlerRunner
 from scrapy.utils.project import get_project_settings
 from scrapy.utils.log import configure_logging
-from coolscrapy.models import db_connect
+from coolscrapy.models import db_connect,create_news_table
 from coolscrapy.models import ArticleRule
 from sqlalchemy.orm import sessionmaker
 from coolscrapy.spiders.article_spider import ArticleSpider

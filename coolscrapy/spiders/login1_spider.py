@@ -63,8 +63,8 @@ class GithubSpider(CrawlSpider):
                                           headers=self.post_headers,  # 注意此处的headers
                                           formdata={
                                               'utf8': '✓',
-                                              'login': 'yidao620c',
-                                              'password': '******',
+                                              'login': 'kbsonlong',
+                                              'password': 'kbsonlong@GMAIL.COM',
                                               'authenticity_token': authenticity_token
                                           },
                                           callback=self.after_login,

@@ -43,6 +43,7 @@ class ArticleSpider(CrawlSpider):
         body = response.xpath(self.rule.body_xpath).extract()
         article["body"] = parse_text(body, self.rule.name, 'body')
 
+
         publish_time = response.xpath(self.rule.publish_time_xpath).extract()
         article["publish_time"] = parse_text(publish_time, self.rule.name, 'publish_time')
 
